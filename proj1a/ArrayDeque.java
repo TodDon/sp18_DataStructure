@@ -17,20 +17,20 @@ public class ArrayDeque<T> {
         if (s <= 8) {
             return;
         }
-        T[] TmpDeque = (T[]) new Object[s];
+        T[] temp = (T[]) new Object[s];
 
         int k = first;
 
-        TmpDeque[k % TmpDeque.length] = aDeque[k % aDeque.length];
+        temp[k % temp.length] = aDeque[k % aDeque.length];
         k += 1;
         while (k % aDeque.length != last) {
-            TmpDeque[k % TmpDeque.length] = aDeque[k % aDeque.length];
+            temp[k % temp.length] = aDeque[k % aDeque.length];
             k += 1;
         }
 
-        aDeque = TmpDeque;
-        last = k % TmpDeque.length;
-        first = first % TmpDeque.length;
+        aDeque = temp;
+        last = k % temp.length;
+        first = first % temp.length;
     }
 
     // add the item in front of the first
@@ -79,7 +79,7 @@ public class ArrayDeque<T> {
         if (size() == 0) {
             return null;
         } else {
-            last = (last - 1) % aDeque.length;
+            last = (last - 1 + aDeque.length) % aDeque.length;
             T tmp = aDeque[last];
             aDeque[last] = null;
 
