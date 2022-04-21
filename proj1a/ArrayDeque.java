@@ -105,7 +105,7 @@ public class ArrayDeque<T> {
         if (index < 0 || index >= aDeque.length) {
             return null;
         }
-        return aDeque[first + index] == null ? null : aDeque[first + index];
+        return aDeque[(first + index) / aDeque.length] == null ? null : aDeque[(first + index) / aDeque.length];
     }
     /*
     public int length() {
