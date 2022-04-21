@@ -1,8 +1,8 @@
 public class LinkedListDeque<T> {
     private class StuffNode {
-        public T item;
-        public StuffNode next;
-        public StuffNode last;
+        private T item;
+        private StuffNode next;
+        private StuffNode last;
 
         public StuffNode(T i,  StuffNode n,  StuffNode l) {
             item = i;
@@ -58,9 +58,9 @@ public class LinkedListDeque<T> {
 
     public T removeFirst() {
         StuffNode p = hsentinel.next;
-        if (p == tsentinel)
+        if (p == tsentinel) {
             return null;
-        else {
+        } else {
             size -= 1;
             hsentinel.next = p.next;
             hsentinel.next.last = hsentinel;
@@ -70,9 +70,9 @@ public class LinkedListDeque<T> {
 
     public T removeLast() {
         StuffNode p = tsentinel.last;
-        if (p == hsentinel)
+        if (p == hsentinel) {
             return null;
-        else {
+        } else {
             size -= 1;
             tsentinel.last = p.last;
             tsentinel.last.next = tsentinel;
@@ -84,7 +84,7 @@ public class LinkedListDeque<T> {
         int i = 0;
         StuffNode p = hsentinel.next;
         while (p != tsentinel) {
-            if (i == index){
+            if (i == index) {
                 return p.item;
             }
             i += 1;
@@ -94,12 +94,13 @@ public class LinkedListDeque<T> {
     }
 
     private T forGetRecursive(StuffNode p, int index) {
-        if (p == null)
+        if (p == null) {
             return null;
-        else if (index == 0)
+        } else if (index == 0) {
             return p.item;
-        else
+        } else {
             return forGetRecursive(p.next, index - 1);
+        }
     }
 
     public T getRecursive(int index) {

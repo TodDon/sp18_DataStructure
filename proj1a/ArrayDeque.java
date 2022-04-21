@@ -9,25 +9,28 @@ public class ArrayDeque<T> {
     public ArrayDeque() {
         aDeque = (T[]) new Object[8];
         first = 0;
-        last = 0;// last always null
+        last = 0; // last always null
     }
 
     // resizing the array
     private void resizing(int s) {
-        T[] aDeque_n = (T[]) new Object[s];
+        if (s <= 8) {
+            return;
+        }
+        T[] TmpDeque = (T[]) new Object[s];
 
         int k = first;
 
-        aDeque_n[k % aDeque_n.length] = aDeque[k % aDeque.length];
+        TmpDeque[k % TmpDeque.length] = aDeque[k % aDeque.length];
         k += 1;
         while (k % aDeque.length != last) {
-            aDeque_n[k % aDeque_n.length] = aDeque[k % aDeque.length];
+            TmpDeque[k % TmpDeque.length] = aDeque[k % aDeque.length];
             k += 1;
         }
 
-        aDeque = aDeque_n;
-        last = k % aDeque_n.length;
-        first = first % aDeque_n.length;
+        aDeque = TmpDeque;
+        last = k % TmpDeque.length;
+        first = first % TmpDeque.length;
     }
 
     // add the item in front of the first
@@ -60,8 +63,7 @@ public class ArrayDeque<T> {
     public T removeFirst() {
         if (size() == 0) {
             return null;
-        }
-        else {
+        } else {
             T tmp = aDeque[first];
             aDeque[first] = null;
             first = (first + 1) % aDeque.length;
@@ -76,8 +78,7 @@ public class ArrayDeque<T> {
     public T removeLast() {
         if (size() == 0) {
             return null;
-        }
-        else {
+        } else {
             last = (last - 1) % aDeque.length;
             T tmp = aDeque[last];
             aDeque[last] = null;
@@ -101,35 +102,15 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
+        if (index < 0 || index >= aDeque.length) {
+            return null;
+        }
         return aDeque[first + index] == null ? null : aDeque[first + index];
     }
     /*
     public int length() {
         return aDeque.length;
-    }
-
-    public static void main(String[] args) {
-        ArrayDeque<Integer> ary = new ArrayDeque<>();
-        for(int i = 0; i < 500; i += 1) {
-            ary.addLast(i);
-        }
-
-
-        System.out.println(ary.size());
-
-        ary.printDeque();
-
-        for (int i = 0; i < 456; i += 1) {
-            System.out.print(ary.removeLast());
-            System.out.print(' ');
-        }
-
-        System.out.println();
-        System.out.println(ary.length());
-        System.out.println(ary.size());
-
-        ary.printDeque();
-
-        System.out.println(ary.get(0));
     }*/
+
+
 }
