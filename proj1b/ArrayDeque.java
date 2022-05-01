@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2022/4/20.
  */
-public class ArrayDeque<T> implements Deque<T>{
+public class ArrayDeque<T> implements Deque<T> {
     private T[] aDeque;
     private int first, last;
 

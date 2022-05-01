@@ -11,7 +11,7 @@ public class Palindrome {
         return wts;
     }
 
-    private boolean isPalindrome_r(String word, int i) {
+    private boolean forPalindrome(String word, int i) {
         char first = word.charAt(i);
         char last = word.charAt(word.length() - i - 1);
 
@@ -19,14 +19,14 @@ public class Palindrome {
             if (i >= word.length() / 2) {
                 return true;
             }
-            return isPalindrome_r(word, i + 1);
+            return forPalindrome(word, i + 1);
         } else {
             return false;
         }
     }
 
     public boolean isPalindrome(String word) {
-        return isPalindrome_r(word, 0);
+        return forPalindrome(word, 0);
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
