@@ -15,7 +15,7 @@ public class Palindrome {
         char first = word.charAt(i);
         char last = word.charAt(word.length() - i - 1);
 
-        if(first == last || Math.abs(first - last) == 32) {
+        if (first == last) {
             if (i >= word.length() / 2) {
                 return true;
             }
