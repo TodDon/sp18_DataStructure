@@ -31,6 +31,7 @@ public class Palindrome {
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
         Deque<Character> d = wordToDeque(word);
+
         int i = 0;
         while (i < d.size() / 2) {
             if (cc.equalChars(d.get(i), d.get(d.size() - i - 1))) {

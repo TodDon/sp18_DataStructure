@@ -29,14 +29,14 @@ public class TestPalindrome {
 
     @Test
     public void testIsPalindromeDiff() {
-        CharacterComparator cc = new OffByN(25);
+        CharacterComparator cc = new OffByN(1);
 
-        assertTrue(palindrome.isPalindrome("", cc));
+        assertFalse(palindrome.isPalindrome("why", cc));
 
-        assertFalse(palindrome.isPalindrome("tzaam", cc));
+        assertTrue(palindrome.isPalindrome("%&", cc));
 
-        assertFalse(palindrome.isPalindrome("Helleh", cc));
+        assertTrue(palindrome.isPalindrome("flake", cc));
 
-        assertFalse(palindrome.isPalindrome("TzAAm", cc));
+        assertFalse(palindrome.isPalindrome("aB", cc));
     }
 }
