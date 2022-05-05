@@ -7,11 +7,11 @@ public class OffByOne implements CharacterComparator {
         int fx = x <= 'z' && x >= 'a' ? 0 : 1;
         int fy = y <= 'z' && y >= 'a' ? 0 : 1;
 
-        if (fx == 0) {
+        if (fx == 1) {
             fx = x <= 'Z' && x >= 'A' ? 1 : 2;
         }
 
-        if (fy == 0) {
+        if (fy == 1) {
             fy = y <= 'Z' && y >= 'A' ? 1 : 2;
         }
 
