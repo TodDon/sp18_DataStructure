@@ -8,14 +8,14 @@ public class GuitarHero {
 
     private static GuitarString[] strings = new GuitarString[keyboard.length()];
 
-    private static double GuitarTune(int i) {
+    private static double guitarTune(int i) {
         return 440.0 * Math.pow(2, (i - 24) / 12.0);
     }
 
     public static void main(String[] args) {
 
         for (int i = 0; i < keyboard.length(); i += 1) {
-            strings[i] = new GuitarString(GuitarTune(i));
+            strings[i] = new GuitarString(guitarTune(i));
         }
 
         while (true) {
